@@ -170,6 +170,8 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
       )
     }
+    println('GettingOPTIONS');
+    println(options);
 
     val requestOptions = PublicKeyCredentialRequestOptions.Builder()
       .setChallenge(byteArray)
