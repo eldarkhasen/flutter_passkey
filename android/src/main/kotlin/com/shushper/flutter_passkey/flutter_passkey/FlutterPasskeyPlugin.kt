@@ -220,7 +220,8 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     } else {
       challengeString.toByteArray()
     }
-
+    println('GettingOPTIONS');
+    println(options);
     val rp = jsonObj.getJSONObject("rp")
     val rpId = rp.getString("id")
     val rpName = rp.getString("name")
