@@ -170,7 +170,7 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
       )
     }
-    println('GettingOPTIONS');
+    println("GettingOPTIONS");
     println(options);
 
     val requestOptions = PublicKeyCredentialRequestOptions.Builder()
@@ -222,7 +222,7 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     } else {
       challengeString.toByteArray()
     }
-    println('GettingOPTIONS');
+    println("GettingOPTIONS");
     println(options);
     val rp = jsonObj.getJSONObject("rp")
     val rpId = rp.getString("id")
