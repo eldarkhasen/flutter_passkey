@@ -180,6 +180,9 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
       .setTimeoutSeconds(jsonObj.getDouble("timeout"))
       .build()
 
+
+    println("RequestOPTIONS");
+    println(options);
     val fido2ApiClient = Fido.getFido2ApiClient(context)
     val task = fido2ApiClient.getSignPendingIntent(requestOptions)
 
