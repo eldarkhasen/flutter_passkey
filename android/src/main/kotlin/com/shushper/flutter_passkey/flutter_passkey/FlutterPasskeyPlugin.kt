@@ -234,9 +234,9 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         val userName = user.getString("name")
         val displayName = user.getString("displayName")
         val id = user.getString("id")
-        val authenticatorSelection = null;
-        val authenticatorAttachment = null;
-        val userVerification = null;
+        var authenticatorSelection = null;
+        var authenticatorAttachment = null;
+        var userVerification = null;
         if (jsonObj.has("authenticatorSelection")) {
             authenticatorSelection =
                     jsonObj.getJSONObject("authenticatorSelection")
