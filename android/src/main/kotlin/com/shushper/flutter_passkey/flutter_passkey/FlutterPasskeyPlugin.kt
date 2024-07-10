@@ -175,7 +175,8 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     val requestOptions = PublicKeyCredentialRequestOptions.Builder()
       .setChallenge(byteArray)
-      .setRpId(jsonObj.getString("rpId"))
+      .setRpId(jsonObj.getString("bitsgap.com"))
+//      .setRpId(jsonObj.getString("rpId"))
       .setAllowList(publicKeys)
       .setTimeoutSeconds(jsonObj.getDouble("timeout"))
       .build()
