@@ -170,8 +170,6 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
             )
         }
-        println("GettingOPTIONS");
-        println(options);
 
         val requestOptions = PublicKeyCredentialRequestOptions.Builder()
                 .setChallenge(byteArray)
@@ -181,8 +179,6 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 .build()
 
 
-        println("RequestOPTIONS");
-        println(options);
         val fido2ApiClient = Fido.getFido2ApiClient(context)
         val task = fido2ApiClient.getSignPendingIntent(requestOptions)
 
@@ -464,6 +460,11 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 res.rawId,
                 Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
         )
+
+        val userHandle = Base64.encodeToString(
+                response.userHandle,
+                Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
+        )
         val clientDataObj =
                 JSONObject(String(response.clientDataJSON, Charsets.UTF_8))
         val clientDataJson = Base64.encodeToString(
@@ -485,7 +486,7 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         jsonResponse.put("authenticatorData", authenticatorDataBase64)
         jsonResponse.put("signature", signatureBase64)
         jsonResponse.put("clientDataJSON", clientDataJson)
-        jsonResponse.put("userHandle", "")
+        jsonResponse.put("userHandle", userHandle)
         jsonResult.put("id", keyHandleBase64)
         jsonResult.put("rawId", keyHandleBase64)
         jsonResult.put("type", "public-key")
@@ -502,7 +503,6 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 )
 
         val response = res.response as AuthenticatorAttestationResponse
-
         val keyHandleBase64 = Base64.encodeToString(
                 res.rawId,
                 Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
