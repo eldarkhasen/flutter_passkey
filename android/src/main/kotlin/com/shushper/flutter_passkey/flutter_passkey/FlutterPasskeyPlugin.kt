@@ -281,6 +281,7 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                                 "",
                                 displayName,
                         )
+                )
 //                ).apply {
 //                    if (authenticatorSelection != null && authenticatorAttachment != null && userVerification != null) {
 //                        setAuthenticatorSelection(
