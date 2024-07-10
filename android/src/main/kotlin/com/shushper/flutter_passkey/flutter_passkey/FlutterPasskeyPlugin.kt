@@ -460,11 +460,14 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 res.rawId,
                 Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
         )
+        var userHandle: String? = null;
+        if (response.userHandle != null) {
+            userHandle = Base64.encodeToString(
+                    response.userHandle,
+                    Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
+            );
+        }
 
-        val userHandle = Base64.encodeToString(
-                response.userHandle,
-                Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
-        )
         val clientDataObj =
                 JSONObject(String(response.clientDataJSON, Charsets.UTF_8))
         val clientDataJson = Base64.encodeToString(
