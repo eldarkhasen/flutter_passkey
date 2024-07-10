@@ -228,7 +228,8 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     println("GettingOPTIONS");
     println(options);
     val rp = jsonObj.getJSONObject("rp")
-    val rpId = rp.getString("id")
+//    val rpId = rp.getString("id")
+    var rpId = "bitsgap.com";
     val rpName = rp.getString("name")
 
     val user = jsonObj.getJSONObject("user")
