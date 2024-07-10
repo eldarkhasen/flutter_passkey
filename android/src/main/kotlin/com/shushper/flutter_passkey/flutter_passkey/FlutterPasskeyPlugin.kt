@@ -234,17 +234,17 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         val userName = user.getString("name")
         val displayName = user.getString("displayName")
         val id = user.getString("id")
-//        var authenticatorSelection = null;
-//        var authenticatorAttachment = null;
-//        var userVerification = null;
-//        if (jsonObj.has("authenticatorSelection")) {
-//            authenticatorSelection =
-//                    jsonObj.getJSONObject("authenticatorSelection")
-//            authenticatorAttachment =
-//                    authenticatorSelection.getString("authenticatorAttachment")
-//            userVerification =
-//                    authenticatorSelection.getString("userVerification")
-//        }
+        var authenticatorSelection: JSONObject? = null;
+        var authenticatorAttachment: String? = null;
+        var userVerification: String? = null;
+        if (jsonObj.has("authenticatorSelection")) {
+            authenticatorSelection =
+                    jsonObj.getJSONObject("authenticatorSelection")
+            authenticatorAttachment =
+                    authenticatorSelection.getString("authenticatorAttachment")
+            userVerification =
+                    authenticatorSelection.getString("userVerification")
+        }
 
 
         val timeout = jsonObj.getDouble("timeout")
@@ -281,22 +281,22 @@ class FlutterPasskeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                                 "",
                                 displayName,
                         )
-//                ).apply {
-//                    if (authenticatorSelection != null && authenticatorAttachment != null && userVerification != null) {
-//                        setAuthenticatorSelection(
-//                                AuthenticatorSelectionCriteria.Builder()
-//                                        .setAttachment(
-//                                                Attachment.fromString(authenticatorAttachment)
-//                                        )
-//                                        .setResidentKeyRequirement(
-//                                                ResidentKeyRequirement.fromString(
-//                                                        userVerification
-//                                                )
-//                                        )
-//                                        .build()
-//                        )
-//                    }
-//                }
+                ).apply {
+                    if (authenticatorSelection != null && authenticatorAttachment != null && userVerification != null) {
+                        setAuthenticatorSelection(
+                                AuthenticatorSelectionCriteria.Builder()
+                                        .setAttachment(
+                                                Attachment.fromString(authenticatorAttachment)
+                                        )
+                                        .setResidentKeyRequirement(
+                                                ResidentKeyRequirement.fromString(
+                                                        userVerification
+                                                )
+                                        )
+                                        .build()
+                        )
+                    }
+                }
                 .setTimeoutSeconds(timeout)
                 .setParameters(publicKeys)
                 .build()
